@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import { useHistory } from "react-router-dom";
-import { ChatEngine } from "react-chat-engine";
 import { auth } from "../Firebase";
 import { useAuth } from "../contexts/AuthContext";
 import SendBirdApp from "@sendbird/uikit-react/App";
@@ -34,8 +33,6 @@ const Chats = () => {
       history.push("/");
       return;
     }
-
-    console.log(user);
 
     const getrq = `https://api-${app_id}.sendbird.com/v3/users/${user.uid}`;
     const postrq = `https://api-${app_id}.sendbird.com/v3/users`;
@@ -86,10 +83,8 @@ const Chats = () => {
 
       <div className="App">
         <SendBirdApp
-          // Add the two lines below.
-
-          appId={process.env.REACT_APP_CHAT_ID} // Specify your Sendbird application ID.
-          userId={user.email} // Specify your user ID.
+          appId={process.env.REACT_APP_CHAT_ID} 
+          userId={user.email}
           theme={"dark"}
           allowProfileEdit={true}
           showSearchIcon={true}
